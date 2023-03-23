@@ -10,10 +10,16 @@ import {
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-// Define route mapping
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'expenses',
+    loadChildren: () =>
+      import('./modules/expenses/expenses.module').then(
+        (x) => x.ExpensesModule
+      ),
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
