@@ -1,2 +1,60 @@
-<h4>Transactions go here</h4>
-<router-outlet></router-outlet>
+<div class="card display-transactions">
+  <p-table
+    [value]="transactions"
+    [paginator]="true"
+    [rows]="5"
+    selectionMode="single"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="width: 10%">
+          Id <p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th pSortableColumn="item" style="width: 10%">
+          Item <p-sortIcon field="item"></p-sortIcon>
+        </th>
+        <th pSortableColumn="amount" style="width: 10%">
+          Amount <p-sortIcon field="amount"></p-sortIcon>
+        </th>
+        <th pSortableColumn="category" style="width: 10%">
+          Category Id <p-sortIcon field="category"></p-sortIcon>
+        </th>
+        <th pSortableColumn="comment" style="width: 10%">
+          Comment <p-sortIcon field="comment"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transaction>
+      <tr>
+        <td>{{ transaction.transactionId }}</td>
+        <td>{{ transaction.item }}</td>
+        <td>{{ transaction.amount | currency : "INR" }}</td>
+        <td>{{ transaction.categoryId }}</td>
+        <td>{{ transaction.comment }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button
+        type="button"
+        icon="pi pi-plus"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button
+        type="button"
+        icon="pi pi-cloud"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-table>
+</div>
+<style>
+  .display-transactions {
+    padding: 5vh 10vh;
+  }
+</style>
