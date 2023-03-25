@@ -1,10 +1,16 @@
+<!-- <div class="card flex justify-content-center">
+  <p-breadcrumb [model]="navLinks"></p-breadcrumb>
+</div> -->
 <div class="card">
-  <p-menubar [model]="navLinks">
+  <p-megaMenu [model]="navLinks" orientation="horizontal" styleClass="flex">
     <ng-template pTemplate="start">
       <img />
     </ng-template>
-    <ng-template pTemplate="end">
-      <input type="text" pInputText placeholder="Search" />
-    </ng-template>
-  </p-menubar>
+  </p-megaMenu>
 </div>
+
+<style>
+  .flex {
+    height: 100%;
+  }
+</style>

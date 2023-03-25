@@ -3,20 +3,15 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Transaction } from '../models/transaction.model';
 import { DataService } from '../shared/data.service';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
   private url = environment.apiBaseUrl + '/transactions';
-  constructor(private dataService: DataService, private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
 
   getTransactions() {
-    return this.http
-      .get(this.url)
-      .pipe(map((response) => response as Transaction[])); //.subscribe((res) => console.log(res));
-
     return this.dataService
       .readData(this.url)
       .pipe(map((response) => response as Transaction[]));

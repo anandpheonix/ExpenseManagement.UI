@@ -3,7 +3,8 @@ export class Transaction {
     public transactionId: number,
     public item: string,
     public amount: number,
-    public categoryId: number,
-    public comment: string
+    public category: string,
+    public comment: string,
+    public createddate: Date
   ) {}
 }

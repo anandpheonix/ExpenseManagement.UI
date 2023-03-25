@@ -5,6 +5,7 @@
     [rows]="5"
     selectionMode="single"
     [showCurrentPageReport]="true"
+    [loading]="loading"
     [tableStyle]="{ 'min-width': '50rem' }"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[10, 25, 50]"
@@ -21,11 +22,25 @@
           Amount <p-sortIcon field="amount"></p-sortIcon>
         </th>
         <th pSortableColumn="category" style="width: 10%">
-          Category Id <p-sortIcon field="category"></p-sortIcon>
+          Category <p-sortIcon field="category"></p-sortIcon>
         </th>
         <th pSortableColumn="comment" style="width: 10%">
           Comment <p-sortIcon field="comment"></p-sortIcon>
         </th>
+        <th pSortableColumn="createddate" style="width: 10%">
+          Created On <p-sortIcon field="createddate"></p-sortIcon>
+        </th>
+        <th style="width: 10%">Options</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      <tr>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-transaction>
@@ -33,8 +48,13 @@
         <td>{{ transaction.transactionId }}</td>
         <td>{{ transaction.item }}</td>
         <td>{{ transaction.amount | currency : "INR" }}</td>
-        <td>{{ transaction.categoryId }}</td>
+        <td>{{ transaction.category }}</td>
         <td>{{ transaction.comment }}</td>
+        <td>{{ transaction.createddate }}</td>
+        <td>
+          <button>Add</button> <button>View</button> <button>Update</button>
+          <button>Delete</button>
+        </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="paginatorleft">

@@ -6,6 +6,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SkeletonModule } from 'primeng/skeleton';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const expensesRoutes: Routes = [
   {
@@ -13,7 +15,7 @@ const expensesRoutes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'transactions', component: TransactionsComponent },
-      { path: '', redirectTo: 'transactions', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
 ];
@@ -26,6 +28,8 @@ const expensesRoutes: Routes = [
     RouterModule.forChild(expensesRoutes),
     TableModule,
     ButtonModule,
+    SkeletonModule,
+    MatTabsModule,
   ],
 })
 export class ExpensesModule {

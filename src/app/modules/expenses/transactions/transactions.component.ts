@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category.model';
 import { Transaction } from 'src/app/models/transaction.model';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -9,20 +10,20 @@ import { TransactionService } from 'src/app/services/transaction.service';
 })
 export class TransactionsComponent implements OnInit {
   transactions: Transaction[] = [];
+  categories: Category[] = [];
   first = 0;
   rows = 10;
+  loading = false;
 
   constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
     this.getAllTransactions();
-    console.log(this.transactions);
   }
 
   getAllTransactions() {
     this.transactionService.getTransactions().subscribe({
       next: (data) => {
-        console.log(data);
         this.transactions = data;
       },
       error: (err) => {
