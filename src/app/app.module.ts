@@ -23,6 +23,20 @@ const appRoutes: Routes = [
         (x) => x.ExpensesModule
       ),
   },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/administration/admin.module').then(
+        (x) => x.AdminModule
+      ),
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/authorization/auth.module').then(
+        (x) => x.AuthorizationModule
+      ),
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

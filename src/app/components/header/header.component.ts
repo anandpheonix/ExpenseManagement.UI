@@ -19,13 +19,12 @@ export class HeaderComponent implements OnInit {
       { label: 'Expenses', routerLink: 'expenses/dashboard' },
       {
         label: 'Admin',
-        routerLink: 'admin/dashboard',
-        visible: false,
+        routerLink: 'admin/users',
       },
-      //   {
-      //     label: 'Login',
-      //     routerLink: 'auth/login',
-      //   },
+      {
+        label: 'Login',
+        routerLink: 'auth/login',
+      },
       //   {
       //     label: 'Logout',
       //     routerLink: 'auth/logout',
