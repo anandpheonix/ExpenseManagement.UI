@@ -19,7 +19,7 @@ export class TransactionService {
 
   addTransaction(newTransaction: Transaction) {
     return this.dataService
-      .createData(this.url + '/add', newTransaction)
+      .createData(this.url, newTransaction)
       .pipe(map((response) => response as Transaction));
   }
 
@@ -30,6 +30,6 @@ export class TransactionService {
   }
 
   deleteTransaction(id: number) {
-    return this.dataService.deleteData(this.url + '/delete', id);
+    return this.dataService.deleteData(this.url, id);
   }
 }
