@@ -12,7 +12,7 @@ export class DataService {
   }
 
   readData(url: string) {
-    return this.http.get(url); //.subscribe((response) => console.log(response));
+    return this.http.get(url);
   }
 
   updateData(url: string, data: any) {
